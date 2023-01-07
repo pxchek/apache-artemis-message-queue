@@ -16,7 +16,5 @@ public class JmsMessageConsumer {
     @JmsListener(destination = "exampleQueue")
     public void receiveMessage(String message) {
         System.out.println("*****MESSAGE RECEIVED*****");
-        System.out.println(message);
-        System.out.println("*****MESSAGE RECEIVED*****\n\n");
     }
 }

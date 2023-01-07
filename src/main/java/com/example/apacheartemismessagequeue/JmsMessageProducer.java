@@ -14,8 +14,6 @@ public class JmsMessageProducer {
 
     public void sendMessage(String message) {
         System.out.println("*****MESSAGE SENT*****");
-        System.out.println(message);
         jmsTemplate.convertAndSend("exampleQueue", message);
-        System.out.println("*****MESSAGE SENT*****\n\n");
     }
 }
