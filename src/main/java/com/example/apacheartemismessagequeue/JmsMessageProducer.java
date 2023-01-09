@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JmsMessageProducer {
+    private static int NUM_MESSAGES_COUNT = 1000000000;
 
     private final JmsTemplate jmsTemplate;
 
@@ -12,8 +13,12 @@ public class JmsMessageProducer {
         this.jmsTemplate = template;
     }
 
-    public void sendMessage(String message) {
-        System.out.println("*****MESSAGE SENT*****");
-        jmsTemplate.convertAndSend("exampleQueue", message);
+    public void sendMessage() throws InterruptedException {
+        while (NUM_MESSAGES_COUNT > 0) {
+            String message = "Web Order Submitted: WEB" + NUM_MESSAGES_COUNT;
+            System.out.println(message);
+            jmsTemplate.convertAndSend("exampleQueue", message);
+            NUM_MESSAGES_COUNT--;
+        }
     }
 }

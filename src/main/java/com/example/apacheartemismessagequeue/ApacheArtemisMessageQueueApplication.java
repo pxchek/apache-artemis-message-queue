@@ -22,7 +22,7 @@ public class ApacheArtemisMessageQueueApplication {
     @Bean
     public ApplicationRunner applicationRunner() {
         return args -> {
-            jmsMessageProducer.sendMessage("Hello world");
+            jmsMessageProducer.sendMessage();
         };
     }
 }
